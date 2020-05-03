@@ -9,7 +9,7 @@ int sum(int n) {
 }
 
 int main() {
-  int a = 7;
+  int a = 5;
   int result = sum(a);
 
   printf("Result: %d\n", result);
