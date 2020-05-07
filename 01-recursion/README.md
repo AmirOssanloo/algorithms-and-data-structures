@@ -7,7 +7,9 @@ Consider the following  C function
 int fn(int n) {
   static int i = 1
 
-  if (n >= 5) return n;
+  if (n >= 5) {
+    return n;
+  }
 
   n = n + i;
 
@@ -17,7 +19,7 @@ int fn(int n) {
 }
 ```
 
-Which is the value returned by fn(1): 
+Which is the value returned by fn(1):
 
 * 5
 * 6
@@ -34,7 +36,9 @@ void fn(int n, int sum) {
   int k = 0;
   int j = 0;
 
-  if (n == 0) return;
+  if (n == 0) {
+    return;
+  }
 
   k = n % 10;
   j = n/10;
@@ -60,3 +64,91 @@ Which sequence does the above program print?
 * 8, 4, 0, 2, 0
 * 2, 0, 4, 8, 14
 * 2, 0, 4, 8, 0
+
+---
+
+### Question 3:
+What is the return value of f(p, p), if the value of p is initialised to 5 before the call? Note that the first parameter is passed by reference, whereas the second parameter is passed by value.
+
+```C
+int fn(int &x, int c) {
+  c = c — 1;
+
+  if (c = = 0) {
+    return 1;
+  }
+
+  x = x + 1;
+
+  return fn(x, c) * x;
+}
+```
+
+Which sequence does the above program print?
+
+* 3024
+* 6561
+* 55440
+* 16051
+
+---
+
+### Question 4:
+Consider the following C function.
+
+```C
+int fn(int n) {
+  int x = 1
+  int k;
+
+  if (n == 1) {
+    return x;
+  }
+
+  for (k = 1; k < n; ++k) {
+    x = x + fn(k) * fn(n — k);
+
+  }
+
+
+  return x;
+}
+```
+
+The return value of fn (5) is:
+
+* 52
+* 51
+* 50
+* 49
+
+---
+
+### Question 5:
+What will be the output of the following C program?
+
+```C
+void count(int n) {
+  static int d = 1;
+
+  printf("%d", n);
+  printf("%d", d);
+
+  d++;
+
+  if (n > 1) {
+    count (n - 1);
+  }
+
+  printf("%d", d);
+}
+
+void main() {
+  count(3);
+}
+```
+
+* 3 1 2 2 1 3 4 4 4
+* 3 1 2 1 1 1 2 2 2
+* 3 1 2 2 1 3 4
+* 3 1 2 1 1 1 2
