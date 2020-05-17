@@ -116,6 +116,47 @@ int Set(struct Array *arr, int index, int x) {
   return -1;
 };
 
+int Min(struct Array arr) {
+  int min = arr.a[0];
+  int i;
+
+  for (i = 1; i < arr.length; i++) {
+    if (arr.a[i] < min) {
+      min = arr.a[i];
+    }
+  }
+
+  return min;
+};
+
+int Max(struct Array arr) {
+  int max = arr.a[0];
+  int i;
+
+  for (i = 1; i < arr.length; i++) {
+    if (arr.a[i] > max) {
+      max = arr.a[i];
+    }
+  }
+
+  return max;
+};
+
+int Sum(struct Array arr) {
+  int sum = 0;
+  int i;
+
+  for (i = 0; i < arr.length; i++) {
+    sum += arr.a[i];
+  }
+
+  return sum;
+};
+
+float Avg(struct Array arr) {
+  return (float)Sum(arr) / arr.length;
+};
+
 int main() {
   struct Array arr = {{2, 3, 4, 5, 6, 8, 10, 12, 14, 16, 18}, 20, 11};
 
@@ -127,10 +168,13 @@ int main() {
   printf("Delete element: %d\n", Delete(&arr, 1));
   Display(arr);
   printf("LinearSearch element: %d\n", LinearSearch(&arr, 5));
-  Display(arr);
   printf("BinarySearch element: %d\n", BinarySearch(arr, 14));
-  printf("Set element: %d\n", Set(&arr, 4, 71));
+  printf("Set element: %d\n", Set(&arr, 4, 11));
   printf("Get element: %d\n", Get(arr, 4));
+  printf("Min element: %d\n", Min(arr));
+  printf("Max element: %d\n", Max(arr));
+  printf("Sum of elements: %d\n", Sum(arr));
+  printf("Avg of elements: %f\n", Avg(arr));
   Display(arr);
 
   return 0;
