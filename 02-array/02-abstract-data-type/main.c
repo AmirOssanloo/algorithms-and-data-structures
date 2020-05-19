@@ -66,6 +66,15 @@ int Delete(struct Array *arr, int index) {
   return -1;
 };
 
+void Reverse(struct Array *arr) {
+  int i;
+  int j;
+
+  for (i = 0, j = arr->length - 1; i < j; i++, j--) {
+    swap(&arr->a[i], &arr->a[j]);
+  }
+};
+
 int LinearSearch(struct Array *arr, int key) {
   int i;
 
@@ -175,6 +184,8 @@ int main() {
   printf("Max element: %d\n", Max(arr));
   printf("Sum of elements: %d\n", Sum(arr));
   printf("Avg of elements: %f\n", Avg(arr));
+  Display(arr);
+  Reverse(&arr);
   Display(arr);
 
   return 0;
