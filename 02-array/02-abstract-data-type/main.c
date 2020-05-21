@@ -7,7 +7,6 @@ struct Array {
   int length;
 };
 
-
 void swap(int *x, int *y) {
   int temp = *x;
   *x = *y;
@@ -348,7 +347,7 @@ int main() {
   struct Array arr2 = {{1, 3, 7, 10, 12, 14}, 20, 6};
   struct Array *arr3;
 
-  Display(*arr3);
+  Display(arr1);
 
   return 0;
 };
